@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import navLogo from './navLogo.png'; // logo image
 import product1 from './product1.jpg'; // white watch
 import product2 from './product2.jpg'; // polaroid camera
 import product3 from './product3.jpg'; // sunglasses
@@ -16,7 +16,7 @@ import generatedVideo1 from './generatedVideo1.mp4'; // random product men 9:16
 import generatedVideo2 from './generatedVideo2.mp4'; // random product women 16:9
 
 export const assets = {
-    logo,
+    navLogo,
     product1,
     product2,
     product3,
