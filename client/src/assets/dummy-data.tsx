@@ -2,7 +2,7 @@ import { UploadIcon, VideoIcon, ZapIcon } from 'lucide-react';
 
 export const featuresData = [
     {
-        icon: <UploadIcon className="w-6 h-6" />,
+        icon: <UploadIcon className="w-6 h-6"/>,
         title: 'Smart Upload',
         desc: 'Drag and drop your assests. We auto-optimize formats and sizes.'
     },
@@ -67,19 +67,19 @@ export const plansData = [
 export const faqData = [
     {
         question: 'What services does your platform provide?',
-        answer: 'We leverage state of the art diffusion models trained on millions of product images to blend your product into realistic scenes '
+        answer: 'We leverage state of the art diffusion models trained on millions of product images to blend your product into realistic scenes while preserving details, lighting and reflections.'
     },
     {
-        question: 'Do you work with startups or only large companies?',
-        answer: 'We work with startups, growing businesses and established brands. Our process is flexible and tailored to match your goals and scale.'
+        question: 'Do I own the generated images?',
+        answer: 'Yes, you receive full commercial rights to any images and videos generated on the platform. Use them for ads, ecommerce, social media and more without restrictions.'
     },
     {
-        question: 'How long does a typical project take?',
-        answer: 'Project timelines vary by scope, but most projects take between 2–6 weeks. We provide a clear timeline after the discovery phase.'
+        question: 'Can I cancel any time?',
+        answer: 'Yes - you can cancel from your dashboard. You will retain access through the end of your billing period.'
     },
     {
-        question: 'Do you offer ongoing support after launch?',
-        answer: 'Yes. We offer maintenance, optimization and growth support packages to ensure your product continues to perform and evolve.'
+        question: 'What input formats do you support?',
+        answer: 'We support PNG, JPG and WEBP image formats. For videos, we support MP4 and MOV formats. Maximum file size is 50MB.'
     }
 ];
 
