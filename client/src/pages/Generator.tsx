@@ -68,8 +68,9 @@ const handleGenerate = async (e:React.FormEvent<HTMLFormElement>) => {
           </div>
         </div>
         <div className="flex justify-center mt-10">
-          <PrimaryButton>
-            {isGenerating?(<><Loader2Icon className="size-5 animate-spin"/>Generating...</>):
+          <PrimaryButton disabled={isGenerating} className="px-10 py-3 rounded-md disabled:opacity-70 disabled:cursor-not-allowed">
+            {isGenerating?(<>
+            <Loader2Icon className="size-5 animate-spin"/>Generating...</>):
             (<>
             <Wand2Icon className="size-5"/>Generate Image
             </>)}
