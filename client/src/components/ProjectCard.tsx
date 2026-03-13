@@ -92,7 +92,8 @@ const ProjectCard = ({
 
         </div>
       {/* Project details */}
-      <div className="pd-4">
+      <div className="p-4">
+          {/* Project name, date and aspect ratio */}
           <div className="flex items-start justify-between gap-4">
             <div className="flex-1 ">
               <h3 className="font-medium text-lg mb-1">{gen.productName}</h3>
@@ -107,6 +108,20 @@ const ProjectCard = ({
               </div>
             </div>
           </div>
+          {/* product description */}
+          {gen.productDescription && (
+            <div className="mt-3">
+              <p className="text-xs text-gray-400 mb-1">Description</p>
+              <div className="text-sm text-gray-300 bg-white/3 p-2 rounded-md wrap-break-word">{gen.productDescription}</div>
+            </div>
+          )}
+
+          {/* user prompt */}
+          {gen.userPrompt && (
+            <div className="mt-3">
+              <div className="text-xs text-gray-300">{gen.userPrompt}</div>
+            </div>
+          )}
       </div>
 
       </div>
