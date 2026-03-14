@@ -1,7 +1,7 @@
 import { useState } from "react"
 import type { Project } from "../types"
 import { useNavigate } from "react-router-dom"
-import { Loader2Icon } from "lucide-react"
+import { EllipsisIcon, EllipsisVertical, Loader2Icon } from "lucide-react"
 
 const ProjectCard = ({
   gen,
@@ -65,7 +65,15 @@ const ProjectCard = ({
               </span>
             )}
           </div>
+          {/* action menu only for generation page */}
+          {!forCommunity && (
+            <div>
+              <div className="">
+                <EllipsisIcon className="ml-auto bg-amber-50"/>
+              </div>
+            </div>
 
+          )}
           {/* Source Images */}
           {gen.uploadedImages?.length > 0 && (
             <div className="absolute right-3 bottom-3 flex items-center">
