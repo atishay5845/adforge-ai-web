@@ -341,8 +341,8 @@ If you love AdForge AI, please give us a ⭐ on GitHub!
 
 <div align="center">
 
-**Made with ❤️ by the AdForge Team**
+**Made with ❤️ by the Atishay Sodhiya**
 
-[Website](https://adforge.ai) • [Twitter/X](https://twitter.com/adforgeai) • [LinkedIn](https://linkedin.com/company/adforge)
+[Website](https://adforge.ai) • [Twitter/X](https://twitter.com/ATISHAY5845) • [LinkedIn](https://linkedin.com/company/adforge)
 
 </div>
