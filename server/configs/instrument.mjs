@@ -1,9 +1,12 @@
-// Import with `import * as Sentry from "@sentry/node"` if you are using ESM
-// const Sentry = require("@sentry/node");
+// import "dotenv/config";
 import * as Sentry from "@sentry/node";
+
 Sentry.init({
-  dsn: "https://005a032214e849384fa2393b0f0895a4@o4511274532405248.ingest.de.sentry.io/4511274541776976",
-  // Setting this option to true will send default PII data to Sentry.
-  // For example, automatic IP address collection on events
-  sendDefaultPii: true,
+  dsn: "https://c309abccfa4bd76a5edfdefefbba12dd@o4511274532405248.ingest.de.sentry.io/4511723430805584",
+  dataCollection: {
+    // To disable sending user data and HTTP bodies, uncomment the lines below. For more info visit:
+    // https://docs.sentry.io/platforms/javascript/guides/node/configuration/options/#dataCollection
+    // userInfo: false,
+    // httpBodies: [],
+  },
 });
