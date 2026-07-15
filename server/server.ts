@@ -5,6 +5,7 @@ import cors from "cors";
 import { clerkMiddleware } from '@clerk/express'
 import clerkWebhooks from "./controllers/clerk";
 import * as Sentry from "@sentry/node";
+import userRouter from "./routes/userRoutes";
 
 const app = express();
 const PORT = 5000;
@@ -24,6 +25,8 @@ app.get('/', (req: Request, res: Response) => {
 app.get("/debug-sentry", function mainHandler(req, res) {
   throw new Error("My first Sentry error!");
 });
+
+app.use('/api/user',userRouter);
 
 // The error handler must be registered before any other error middleware and after all controllers
 Sentry.setupExpressErrorHandler(app);
