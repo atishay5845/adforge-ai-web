@@ -76,7 +76,15 @@ export const toggleProjectPublish = async (req: Request, res: Response) => {
       if(!project?.generatedImage && !project?.generatedVideo){
         return res.status(400).json({message: "Project has no generated content"});
       }
-      res.json({project});
+      await prisma.project.update({
+        where:{
+          id: projectId,userId
+        },
+        data:{
+          isPublished: !project.isPublished
+        }
+      })
+      res.json({isPublished: !project.isPublished});
   }catch(error: any){
     Sentry.captureException(error);
     res.status(500).json({message: error.message})
