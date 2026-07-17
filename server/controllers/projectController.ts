@@ -2,7 +2,21 @@ import {Request, Response} from "express";
 import * as Sentry from "@sentry/node";
 import { prisma } from "../configs/prisma";
 import {v2 as cloudinary} from "cloudinary";
+import ai from "../configs/ai";
+import { GenerateContentConfig, HarmBlockThreshold, HarmCategory } from "@google/genai";
+import path from "path";
+import fs from 'fs';
+
+const loadImage = (path:string, mimeType:string)=>{
+  return {
+    inlineData:{
+      data:
+    }
+  }
+}
+
 //this function will create a new project and return the project id based  on the user credits and the project details
+
 
 export const createProject = async (req: Request, res: Response) => {
   let tempProjectId: string;
@@ -55,8 +69,35 @@ export const createProject = async (req: Request, res: Response) => {
         isGenerating: true
       }
     })
-    
     tempProjectId = project.id;
+    //call the google gen ai api to generate the video based on the uploaded images and the user prompt
+    const model = 'gemini-3-pro-image-preview';
+    //
+    const generationConfig: GenerateContentConfig  = {
+      maxOutputTokens: 1024,//max output tokens for the generated content
+      temperature: 1,//
+      topP: 0.95,// this means that the model will consider the top 95% of the probability distribution when generating the next token. This helps to ensure that the generated content is diverse and not too repetitive.
+      responseModalities: ['IMAGE'],//this means that the model will generate an image as the output
+      imageConfig:{ //this is the configuration for the image generation
+        aspectRatio: aspectRatio || '9:16',
+        imageSize: '1K',
+      },
+      safetySettings: [ //this is the configuration for the safety settings
+        {
+          category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+          threshold: HarmBlockThreshold.OFF,
+        },
+        {
+        category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+          threshold: HarmBlockThreshold.OFF,
+        },{
+          category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+          threshold: HarmBlockThreshold.OFF,
+
+        }
+      ]
+
+    }
 
   }catch(error: any){
     Sentry.captureException(error);
