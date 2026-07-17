@@ -42,6 +42,22 @@ export const createProject = async (req: Request, res: Response) => {
         return result.secure_url;
       })
     );
+    const project = await prisma.project.create({
+      data:{
+        name,
+        userId,
+        productName,
+        productDescription,
+        userPrompt,
+        aspectRatio,
+        targetLength: parseInt(targetLength),
+        uploadedImages,
+        isGenerating: true
+      }
+    })
+    
+    tempProjectId = project.id;
+
   }catch(error: any){
     Sentry.captureException(error);
     res.status(500).json({message: error.message})
