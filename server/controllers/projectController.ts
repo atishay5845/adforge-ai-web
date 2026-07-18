@@ -10,7 +10,8 @@ import fs from 'fs';
 const loadImage = (path:string, mimeType:string)=>{
   return {
     inlineData:{
-      data:
+      data: fs.readFileSync(path).toString('base64'),
+      mimeType
     }
   }
 }
@@ -98,6 +99,25 @@ export const createProject = async (req: Request, res: Response) => {
       ]
 
     }
+    const img1base64 = loadImage(images[0].path,images[0].mimeType);
+    const img2base64 = loadImage(images[1].path,images[1].mimeType);
+    const prompt = {
+      text: `Combine the person and product into a realistic photo.
+      Make the person naturally hold or use the product.
+      Match lighting, shadows, scale and perspective.
+      Make the person stand in professional studio lighting.
+      Output ecommerce-quality photo realistic imagery.
+      ${userPrompt}`
+    }
+    //generate the img using the ai model
+    const response: any = await ai.models.generateContent({
+      model,
+      contents: [img1base64,img2base64,prompt],
+      config:generationConfig
+    })
+
+    //check if the response is valid
+    if(!response?)
 
   }catch(error: any){
     Sentry.captureException(error);
