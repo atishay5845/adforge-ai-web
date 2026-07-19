@@ -117,7 +117,25 @@ export const createProject = async (req: Request, res: Response) => {
     })
 
     //check if the response is valid
-    if(!response?)
+    if(!response?.candidates?.[0]?.content?.parts){
+      throw new Error('Unexpected answer');
+    }
+    const parts = response.candidates[0].content.parts;
+    let finalBuffer:  Buffer| null = null;
+
+    for(const part of parts){
+      if(part.inlineData){
+        finalBuffer = Buffer.from(part.inlineData.data,'base64');
+      }
+    }
+    if(!finalBuffer){
+      throw new Error('failed to generate image');
+
+    }
+    const base64Image = `data:image/png;base64,${finalBuffer.toString('base64')}`;
+    const uploadResult = await cloudinary.uploader.upload(base64Image,{resource_type:'image'});
+    
+    await prisma.projectM
 
   }catch(error: any){
     Sentry.captureException(error);
