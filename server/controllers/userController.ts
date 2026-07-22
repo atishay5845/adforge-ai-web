@@ -40,7 +40,7 @@ export const getAllProjects = async (req: Request, res: Response) => {
     res.status(500).json({message: error.message})
   }
 }
-
+    
 //get project by id
 export const getProjectById = async (req: Request, res: Response) => {
   try{
